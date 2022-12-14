@@ -1,0 +1,11 @@
+.tableDatos{
+}
+.tableDatos table,.tableDatos thead,.tableDatos th{
+    border: 1px solid #000;
+    border-radius: 20px;
+}
+.tableDatos thead{
+    background: #00304E;
+    color: #fff;
+    border-radius: 8px;
+}

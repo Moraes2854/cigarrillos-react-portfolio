@@ -1,0 +1,19 @@
+.select{
+    display: flex;
+    width:100%;
+    height: 60px;
+    color:#FFFFFF;
+    background-color:#505464;
+    outline: none;
+    border:none;
+    padding-left: 10PX;
+    border-right: 14px solid transparent;
+    /* border-radius: 6px; */
+  
+  }
+  
+  select#xyz {
+    border:0px;
+    outline:0px;
+  }
+  

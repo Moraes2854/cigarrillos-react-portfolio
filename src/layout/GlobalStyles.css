@@ -1,0 +1,79 @@
+.form__input {
+    font-family: 'Roboto', sans-serif;
+    color:black;
+    font-size: 18px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 100%;
+    display: block;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+input:disabled{
+    color:gray;
+}
+
+.form__input:placeholder-shown + .form__label {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(-5rem);
+    transform: translateY(-5rem);
+    color:black;
+}
+
+.custom-button{
+    width:100%;
+    font-size: 18px;
+    text-decoration: none;
+    outline: none;
+    border:none;
+    color:white;
+    padding: 10px 0;
+    transition: all 0.2s;
+
+}   
+
+
+.agregar-compra,
+.agregar-venta,
+.copiar-compras{
+    background-color: #0556a1;
+}
+
+.agregar-compra:hover,
+.agregar-venta:hover,
+.copiar-compras:hover{
+    background-color: #034a8d;
+}
+
+.cargar-compras,
+.consultar-datos,
+.guardar-cigarrillo,
+.guardar-compra,
+.guardar-venta{
+    background-color:#604488;
+    
+}
+.cargar-compras:hover,
+.consultar-datos:hover,
+.guardar-cigarrillo:hover,
+.guardar-compra:hover,
+.guardar-venta:hover{
+    background-color:#503970;
+}
+
+.custom-label{
+    color:white;
+    font-size: 18px;
+}
+
+.datos-box{
+    padding:20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 6px 6px 3px #333;
+}
