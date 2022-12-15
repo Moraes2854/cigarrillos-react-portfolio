@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { useAppStore, useDB, useFocus } from '.';
+import { fireErrorToast } from '../helpers/toast';
 import { CreateVentaDto, FormVenta, Cigarrillo } from '../interfaces';
 
 
@@ -24,7 +25,9 @@ export const useVentas = () => {
     const addVenta = () => {
         if (selectedCigarrillo){
   
-          if (newStock >= selectedCigarrillo!.stock) throw new Error('El nuevo no puede ser mayor o igual al anterior');
+          if (newStock >= selectedCigarrillo!.stock) {
+            return fireErrorToast('El nuevo stock no puede ser mayor o igual al stock anterior');
+          }
   
           const amount = selectedCigarrillo!.stock-newStock;
       

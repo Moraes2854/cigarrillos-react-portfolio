@@ -6,7 +6,6 @@ const baseURL = `${getEnvVariables().VITE_APP_API_URL}/auth`;
 
 const authApi = axios.create({
     baseURL,
-    
     headers: { Authorization: `Bearer ${localStorage.getItem('token')!}` }
 });
 
