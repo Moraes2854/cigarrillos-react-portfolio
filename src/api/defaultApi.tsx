@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { getEnvVariables } from '../helpers/getEnvVariables';
 
 
-const baseURL = `${getEnvVariables().VITE_APP_API_URL}`;
+const baseURL = `${window.location.origin}/api`;
 
 const defaultApi = axios.create({
     baseURL,

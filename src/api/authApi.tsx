@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { getEnvVariables } from '../helpers/getEnvVariables';
 
 
-const baseURL = `${getEnvVariables().VITE_APP_API_URL}/auth`;
+const baseURL = `${window.location.origin}/api/auth`;
 
 const authApi = axios.create({
     baseURL,
