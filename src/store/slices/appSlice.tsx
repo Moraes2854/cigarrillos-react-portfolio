@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Cigarrillo } from '../../interfaces';
-import { Venta } from '../../interfaces/venta';
-import { Compra } from '../../interfaces/compra';
+import { Cigarrillo } from '../../common/interfaces';
 
 
 

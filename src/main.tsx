@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { AppTheme } from './theme';
 import { store } from './store'
 import { CigarrillosApp } from './CigarrillosApp'
-import { LoadingProvider } from './context/LoadingContext';
+import { LoadingProvider } from './common/context/LoadingContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

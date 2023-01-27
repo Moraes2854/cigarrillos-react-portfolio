@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { useAuthStore } from '../hooks/useAuthStore';
 import { AppRoutes } from './AppRoutes';
 import { AuthRoutes } from './AuthRoutes';
+import { useAuthStore } from '../common/hooks';
 
 
 export const AppRouter = () => { 
@@ -48,4 +48,20 @@ export const AppRouter = () => {
   )
   
 }
+
+// export const AppRouter = () => { 
+//   return (
+//     <Routes>
+//         <Route path="/app/*" element={<AppRoutes />}/>
+//         <Route path="/*" 
+//           element={
+//             (localStorage.getItem('lastPath')) 
+//             ? <Navigate to={`${localStorage.getItem('lastPath')}`}/>
+//             : <Navigate to={`/app/ventas`}/>
+//           }
+//         />
+//     </Routes>
+//   )
+  
+// }
 

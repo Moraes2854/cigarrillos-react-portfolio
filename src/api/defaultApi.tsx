@@ -5,7 +5,9 @@ const baseURL = `${window.location.origin}/api`;
 
 const defaultApi = axios.create({
     baseURL,
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')!}` }
+    headers: { 
+        Authorization: `Bearer ${localStorage.getItem('token')!}`,
+    }
 });
 
 defaultApi.interceptors.request.use( (config) => {
@@ -14,6 +16,8 @@ defaultApi.interceptors.request.use( (config) => {
     }
     return config;
 });
+
+
 
 export default defaultApi;
 
