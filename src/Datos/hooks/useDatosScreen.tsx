@@ -148,10 +148,6 @@ export const useDatosBody = () => {
 
     }
 
-    useEffect(()=>{
-        console.log({currentDato});
-    }, [currentDato]);
-
     
     return {
         initDate,

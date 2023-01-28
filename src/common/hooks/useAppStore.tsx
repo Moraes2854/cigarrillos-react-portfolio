@@ -15,53 +15,62 @@ export const useAppStore = () => {
 
     const dispatch = useAppDispatch();
 
-    const setSideBarOpen = (open:boolean)=>{
-        dispatch(setSidebarOpenStore(open))
+    const setSideBarOpen = ( open:boolean )=>{
+        dispatch( setSidebarOpenStore( open ) )
     }
 
-    const setSelectedCigarrillo = (id:string) => {
-        dispatch(setSelectedCigarrilloStore(id));
+    const setSelectedCigarrillo = ( id:string ) => {
+        dispatch( setSelectedCigarrilloStore( id ) );
     }
 
     const changeCigarrillosMenuOpen = () => {
-        dispatch(setCigarrillosMenuOpenStore(!cigarrillosMenuOpen))
+        dispatch( setCigarrillosMenuOpenStore( !cigarrillosMenuOpen ) )
     }
 
     const cargarCigarrillos = () =>{
         console.log('cargarCigarrillos fired');
 
         try {
-            setLoading(true);
+            setLoading( true );
+
             requestApi<Cigarrillo[]>(`/cigarrillos`, 'GET')
-            .then((cigarrillos) => {
-                dispatch(setCigarrillosStore(cigarrillos))
-                setLoading(false);
+            .then(( cigarrillos ) => {
+
+                dispatch( setCigarrillosStore( cigarrillos ) );
+                setSelectedCigarrillo( cigarrillos[0].id );
+                setLoading( false );
+                
             })
-            .catch((err)=>{
-                setLoading(false);
+            .catch(()=>{
+                setLoading( false );
             })
 
         } catch (error) {
-            setLoading(false);
-            fireErrorToast(getErrorMessage(error));
+            setLoading( false );
+            fireErrorToast( getErrorMessage( error ) );
         }
 
     }
 
     const updateCigarrillos = (cigarrillos:Cigarrillo[]) => {
-        dispatch(setCigarrillosStore(cigarrillos));
+        dispatch( setCigarrillosStore( cigarrillos ) );
     }
 
     const updateCigarrilloLocal = (cigarrilloId:string, cigarrillo:Cigarrillo) => {
+
         const index = cigarrillos.findIndex((c)=>c.id === cigarrilloId);
-        if (index>=0){
-            dispatch(setCigarrillosStore(cigarrillos.map((c)=>(c.id!==cigarrilloId) ? c : cigarrillo)));
+
+        if ( index >=0 ){
+
+            dispatch( setCigarrillosStore( cigarrillos.map(( c )=>( c.id!==cigarrilloId ) ? c : cigarrillo ) ) );
+
         }
+        
     }
 
     useEffect(()=>{
-        if (selectedCigarrillo) setSelectedCigarrillo(selectedCigarrillo.id);
-    }, [cigarrillos]);
+        if ( selectedCigarrillo ) setSelectedCigarrillo( selectedCigarrillo.id );
+    }, [ cigarrillos ]);
 
     return {
         cigarrillos,

@@ -35,38 +35,40 @@ export const useVentas = () => {
     const { date, cigarrilloId, newStock } = form;
   
     const addVenta = () => {
-        if (selectedCigarrillo){
-  
-          if (newStock >= selectedCigarrillo!.stock) {
-            return fireErrorToast('El nuevo stock no puede ser mayor o igual al stock anterior');
-          }
-  
-          const amount = selectedCigarrillo!.stock-newStock;
-      
-          const venta:CreateVentaDto = {
-            amount,
-            cigarrilloId,
-            date
-          }
-          
-          setVentas([...ventas, venta]);
-          
 
+      if (selectedCigarrillo){
 
-          updateCigarrilloLocal(cigarrilloId, {
-            ...selectedCigarrillo,
-            stock:newStock
-          });
-          
-          setForm({
-            ...form,
-            newStock:0
-          });
-          
-          //@ts-ignore
-          setFocusSelect();
-        
+        if (newStock >= selectedCigarrillo!.stock) {
+          return fireErrorToast('El nuevo stock no puede ser mayor o igual al stock anterior');
         }
+
+        const amount = selectedCigarrillo!.stock-newStock;
+    
+        const venta:CreateVentaDto = {
+          amount,
+          cigarrilloId,
+          date
+        }
+        
+        setVentas([...ventas, venta]);
+        
+
+
+        updateCigarrilloLocal(cigarrilloId, {
+          ...selectedCigarrillo,
+          stock:newStock
+        });
+        
+        setForm({
+          ...form,
+          newStock:0
+        });
+        
+        //@ts-ignore
+        setFocusSelect();
+      
+      }
+
     }
     
     const deleteVenta = (venta:CreateVentaDto) => {
@@ -128,8 +130,10 @@ export const useVentas = () => {
     }
   
     useEffect(()=>{
+
       if (cigarrillos.length > 0 ) setSelectedCigarrillo(cigarrillos[0].id);
-    }, [cigarrillos]);
+
+    }, []);
 
     useEffect(()=>{
       if (selectedCigarrillo){

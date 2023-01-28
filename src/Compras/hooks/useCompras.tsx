@@ -43,19 +43,24 @@ export const useCompras = () => {
   const { date, cigarrilloId, cantidad } = form;
 
   const addCompra = (c:number, id:string, fecha:string) => {
+
     const cigarrillo = getCigarrilloById(cigarrillos, id);
     const comprasFinal:CreateCompraDto[] = [];
-    if (cigarrillo){
+
+    if (cigarrillo) {
+
       const index = compras.findIndex((c)=>c.cigarrilloId === id);
 
-      if (index >= 0){
+      if (index >= 0) {
 
         const compra:CreateCompraDto = {
           amount:(c+(compras.at(index)!.amount)),
           cigarrilloId:id,
           date:fecha,
         }
-        comprasFinal.push(...compras.map((c, i) => (i === index) ? compra : c))
+
+        comprasFinal.push(...compras.map((c, i) => (i === index) ? compra : c));
+
       }
 
       else {
@@ -225,14 +230,16 @@ export const useCompras = () => {
   }
 
     useEffect(()=>{
+      
       if (cigarrillos.length > 0 ) setSelectedCigarrillo(cigarrillos[0].id);
-    }, [cigarrillos]);
+
+    }, []);
 
     useEffect(()=>{
       if (selectedCigarrillo){
         setForm({
           ...form,
-          cigarrilloId:selectedCigarrillo!.id
+          cigarrilloId:selectedCigarrillo.id
         });
       }
     }, [selectedCigarrillo]);
